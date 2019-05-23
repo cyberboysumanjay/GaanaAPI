@@ -78,7 +78,7 @@ def downloadAndParsePage(link):
                     'language' : json_song['language'],
                     'gaana_url' : fix_share_url(json_song['share_url']),
                     'duration' : json_song['duration'],
-                    'artist' : json_song['artist'],
+                    'artist' : fix_artist_name(json_song['artist']),
                     'released' : json_song['release_date'],
                     'bitrate' : enc_message['bitRate'],
                     'link' : decryptLink(enc_message['message'])
