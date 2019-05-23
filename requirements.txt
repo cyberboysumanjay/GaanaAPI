@@ -1,0 +1,16 @@
+Flask
+gunicorn
+httplib2==0.11.3
+requests
+beautifulsoup4
+httplib2
+google_api_python_client==1.7.4
+clint
+pycryptodome
+requests-toolbelt
+pyDes
+bs4
+lxml
+lyricwikia
+httplib2
+m3u8
