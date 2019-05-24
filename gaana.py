@@ -68,7 +68,6 @@ def downloadAndParsePage(link):
             elif 'normal' in json_song['path']:
                 enc_message = json_song['path']['normal'][0]
             else:
-                #print(json_song)
                 enc_message = json_song['path']['auto'][0]
 
 
@@ -77,7 +76,7 @@ def downloadAndParsePage(link):
                     'thumb' : json_song['albumartwork_large'],
                     'language' : json_song['language'],
                     'gaana_url' : fix_share_url(json_song['share_url']),
-                    'duration' : json_song['duration'],
+                    'duration' : str(int(json_song['duration'])//60)+"min " + str(int(json_song['duration'])%60) + "sec",
                     'artist' : fix_artist_name(json_song['artist']),
                     'released' : json_song['release_date'],
                     'bitrate' : enc_message['bitRate'],
@@ -88,4 +87,4 @@ def downloadAndParsePage(link):
             pass
     return songs
 
-#print(downloadAndParsePage('https://gaana.com/song/vaaste'))
+#print(downloadAndParsePage('https://gaana.com/song/homicide-109'))
