@@ -10,17 +10,32 @@ app.secret_key = 'test'
 def home():
    return "Working"
 
-@app.route('/result/')
+@app.route('/result/', methods=['GET', 'POST'])
 def result():
     data=''
     link=request.args.get('url')
+    #link='https://gaana.com/song/kuch-kuch-3'
     try:
-        data=jsonify(gaana.downloadAndParsePage(link))
-        return data
+        data=(gaana.downloadAndParsePage(link))
+        if len(data)>0:
+            return jsonify(data)
+        raise ArithmeticError
     except Exception as e:
-        print(e)
-        print_exc()
-    #print(data)
+        errors=[]
+        error = {'title' : 'Unable to fetch',
+                'album' : 'Unable to fetch',
+                'thumb' : 'Unable to fetch',
+                'language' : 'Unable to fetch',
+                'gaana_url' : 'Unable to fetch',
+                'duration' : 'Unable to fetch',
+                'artist' : 'Unable to fetch',
+                'released' : 'Unable to fetch',
+                'bitrate' : 'Unable to fetch',
+                'link' : 'Unable to fetch',
+                'status': e
+        }
+        errors.append(error)
+        return jsonify(errors)
     return data
 
 if __name__ == '__main__':

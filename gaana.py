@@ -13,6 +13,7 @@ from traceback import print_exc
 import m3u8
 import base64
 import subprocess
+import json
 #Add Metadata
 import eyed3
 import lyricwikia
@@ -23,6 +24,27 @@ DOWN_FOLDER = '.'
 headers = {
     'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0'
 }
+
+def fate_proxy():
+    resp=requests.get('https://raw.githubusercontent.com/fate0/proxylist/master/proxy.list')
+    a=((resp.text).split('\n'))
+    p_list=[]
+
+    for i in a:
+        try:
+            p_list.append(json.loads(i))
+        except Exception as e:
+            #print("Test",e)
+            continue
+    #print(len(p_list))
+    np_list=[]
+    for i in p_list:
+        if i['country']=='IN':
+            np_list.append(i)
+    proxy=[]
+    for i in np_list:
+        proxy.append((str(i['host'])+':'+str(i['port'])))
+    return(proxy)
 
 def fix_share_url(s):
     s=s.replace("\\",'')
@@ -51,14 +73,28 @@ def fix_artist_name(t):
 
 def downloadAndParsePage(link):
     response=''
-    try:
-        response = requests.get(link,headers=headers).text
-    except Exception as e:
-        print(e)
+    response=requests.get(link,headers=headers).text
+    raw_songs = list(set(REGEX.findall(response)))
+    #print(raw_songs)
+    if len(raw_songs)==0:
+        try:
+            proxies=fate_proxy()
+            #print(proxies)
+            for proxy in proxies:
+                try:
+                    response = requests.get(link,headers=headers,proxies={"http": proxy, "https": proxy}).text
+                    #print(response)
+                    break
+                except Exception as e:
+                    print(e)
+        except Exception as e:
+            print(e)
+
     raw_songs = list(set(REGEX.findall(response)))
     songs = []
     for raw_song in raw_songs:
         json_song = JSONDEC.decode(raw_song)
+
         enc_message = None
         try:
             if 'high' in json_song['path']:
@@ -84,7 +120,8 @@ def downloadAndParsePage(link):
             }
             songs.append(song)
         except Exception as e:
-            pass
+            print(e)
     return songs
 
 #print(downloadAndParsePage('https://gaana.com/song/homicide-109'))
+#fate_proxy()
