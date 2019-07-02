@@ -1,15 +1,11 @@
 Flask
 gunicorn
 httplib2
-eyed3
 requests
 beautifulsoup4
-google_api_python_client==1.7.4
 clint
 pycryptodome
 requests-toolbelt
 pyDes
 bs4
 lxml
-lyricwikia
-m3u8
