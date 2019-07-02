@@ -42,6 +42,10 @@ def fix_share_url(s):
     s='https://gaana.com'+s
     return (s)
 
+def fix_album_art(url):
+    url=url.replace("175x175","640x640")
+    return url
+
 def decryptLink(message):
     IV = 'asd!@#!@#@!12312'.encode('utf-8')
     KEY = 'g@1n!(f1#r.0$)&%'.encode('utf-8')
@@ -97,7 +101,7 @@ def downloadAndParsePage(link):
 
             song = {'title' : json_song['title'],
                     'album' : json_song['albumtitle'],
-                    'thumb' : json_song['albumartwork_large'],
+                    'thumb' : fix_album_art(json_song['albumartwork_large']),
                     'language' : json_song['language'],
                     'gaana_url' : fix_share_url(json_song['share_url']),
                     'duration' : str(int(json_song['duration'])//60)+"min " + str(int(json_song['duration'])%60) + "sec",
