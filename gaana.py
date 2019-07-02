@@ -1,22 +1,13 @@
-#Old Handler
 from bs4 import BeautifulSoup
 import requests
 import lxml
-#New Handler
 from Crypto.Cipher import AES
 import re
-import sys
-import os
-import argparse
 from json import JSONDecoder
 from traceback import print_exc
-import m3u8
 import base64
-import subprocess
 import json
-#Add Metadata
-import eyed3
-import lyricwikia
+
 unpad = lambda s : s[0:-ord(s[-1])]
 REGEX = re.compile('> ({[^<]*}) <')
 JSONDEC = JSONDecoder()
@@ -75,15 +66,12 @@ def downloadAndParsePage(link):
     response=''
     response=requests.get(link,headers=headers).text
     raw_songs = list(set(REGEX.findall(response)))
-    #print(raw_songs)
     if len(raw_songs)==0:
         try:
             proxies=fate_proxy()
-            #print(proxies)
             for proxy in proxies:
                 try:
                     response = requests.get(link,headers=headers,proxies={"http": proxy, "https": proxy}).text
-                    #print(response)
                     break
                 except Exception as e:
                     print(e)
@@ -122,6 +110,3 @@ def downloadAndParsePage(link):
         except Exception as e:
             print(e)
     return songs
-
-#print(downloadAndParsePage('https://gaana.com/song/homicide-109'))
-#fate_proxy()
