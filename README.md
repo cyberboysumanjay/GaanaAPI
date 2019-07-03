@@ -57,8 +57,9 @@ http://127.0.0.1:5000/result/?url=<insert-gaana-link-here>
 **Example:** Navigate to http://127.0.0.1:5000/result/?url=https://gaana.com/song/alone-1435 to get a json response of song data in return.
 
 
-### You can fork the repo and Deploy it on Heroku :)
-#### Instructions for the same will be added if requested.
+### You can fork the repo and deploy on VPS or deploy it on Heroku :)  
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 
 #### Star the Repo in case you liked it :)
 
