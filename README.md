@@ -58,7 +58,7 @@ http://127.0.0.1:5000/result/?url=<insert-gaana-link-here>
 
 
 ### You can fork the repo and deploy on VPS or deploy it on Heroku :)  
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/cyberboysumanjay/gaanaapi/tree/master)
 
 
 #### Star the Repo in case you liked it :)
