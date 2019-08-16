@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request,flash
+from flask import Flask, render_template,request,flash,redirect
 import time
 from flask import  jsonify,json
 import gaana
@@ -8,13 +8,12 @@ app.secret_key = 'test'
 
 @app.route('/')
 def home():
-   return "Working"
+   return redirect("https://cyberboysumanjay.github.io/GaanaAPI/")
 
 @app.route('/result/', methods=['GET', 'POST'])
 def result():
     data=''
     link=request.args.get('url')
-    #link='https://gaana.com/song/kuch-kuch-3'
     try:
         data=(gaana.downloadAndParsePage(link))
         if len(data)>0:
