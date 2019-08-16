@@ -29,7 +29,7 @@
 "language":"English",
 "link":"https://vodhls-vh.akamaihd.net/i/songs/54/1854954/21232014/21232014_96.mp4/master.m3u8?set-akamai-hls-revision=5&hdnts=st=1562082331~exp=1562100331~acl=/i/songs/54/1854954/21232014/21232014_96.mp4/*~hmac=1dac0568ef4d53a5aadc314fba45f5b587dc1e098cd7dddb76fe1f1d2b4a24a1",
 "released":"Dec 02, 2016",
-"thumb":"https://a10.gaanacdn.com/images/albums/54/1854954/crop_175x175_1854954.jpg",
+"thumb":"https://a10.gaanacdn.com/images/albums/54/1854954/crop_640x640_1854954.jpg",
 "title":"Alone"
 }
 ```
@@ -38,7 +38,7 @@
 
 Clone this repository using
 ```sh
-$ git clone https://github.com/cyberboysumanjay/gaanaapi
+$ git clone https://github.com/cyberboysumanjay/GaanaAPI
 ```
 Enter the directory and install all the requirements using
 ```sh
