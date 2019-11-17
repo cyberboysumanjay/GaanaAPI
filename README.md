@@ -1,5 +1,12 @@
 ## Gaana API [Unofficial]
 
+
+### Show some :heart: and :star: the repo to support the project
+
+[![GitHub stars](https://img.shields.io/github/stars/cyberboysumanjay/gaanaapi.svg?style=social&label=Star)](https://github.com/cyberboysumanjay/GaanaAPI)
+![GitHub followers](https://img.shields.io/github/followers/cyberboysumanjay.svg?style=social&label=Follow)
+[![Twitter Follow](https://img.shields.io/twitter/follow/cyberboysj.svg?style=social)](https://twitter.com/CyberboySj)
+
 #### Gaana API written in Python using Flask  
 
  ---
